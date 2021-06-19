@@ -1,0 +1,324 @@
+{
+	"root": {
+		"name": "root",
+		"title": "Root page object",
+		"comment": "Object representing the overall HTML page",
+		"container": false,
+		"html": {
+			"before": "<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <script src=\"https://kit.fontawesome.com/63f3f913ae.js\" crossorigin=\"anonymous\"></script>\n",
+			"list": "<body>\n<div id=\"overlay\" onclick=\"hidehelp()\">\n  <div id=\"help_modal\"><p>Help Text</p></div>\n</div>\n\n\n<div class='topbar'>\n    <div>&nbsp;</div>\n    <div class='online'><i class='fas fa-circle'></i></div>\n    <div class='cache'><span id='cachecount'>2</span><i class='fas fa-upload'></i></div>\n</div>\n",
+			"after": "</body></html>"
+		},
+		"js": {
+			"external": "js/common.js",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "css/common.css",
+			"head": ""
+		}
+	},
+	"form": {
+		"name": "form",
+		"title": "Form",
+		"comment": "Wrapper for the form object",
+		"container": true,
+		"html": {
+			"before": "<form id='%element_id%'>\n    <input type=\"hidden\" name=\"name\" id='meta_name' value=\"%name%\">\n    <input type=\"hidden\" name=\"id\" id='meta_id' value=\"%id%\">\n    <input type=\"hidden\" name=\"version\" id='meta_version' value=\"%version%\">\n\n\n\n\n",
+			"list": "",
+			"after": "    <button type='button' class=\"right_button\" onclick='submitForm(\"%element_id%\",\"%target_url%\");'><i class=\"fa fa-send\"></i> Submit</button>\n</form>"
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": "    .right_button {\n        float:right;\n        margin-bottom: 20px;\n        margin-top: 2px;\n        margin-right: 10px;\n        font-family: 'Open sans', sans-serif;\n        line-height: 18pt;\n        font-size:medium;\n    }\n"
+		},
+		"variables": {
+			"element_id": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"target_url": {
+				"type": "string",
+				"options": "",
+				"default": "web"
+			}
+		}
+	},
+	"title": {
+		"name": "title",
+		"title": "Page title",
+		"comment": "Visual grouping of form elements with a title (using HTML <fieldset> and <legend>).",
+		"container": false,
+		"html": {
+			"before": "<h1>%display_name%</h1>",
+			"list": "",
+			"after": ""
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": "    h1 {\n        margin-top: 10px;\n        margin-left: 10px;\n    }\n"
+		},
+		"variables": {
+			"display_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			}
+		}
+	},
+	"group": {
+		"name": "group",
+		"title": "Fieldset group",
+		"comment": "Visual grouping of form elements with a title (using HTML <fieldset> and <legend>).",
+		"container": true,
+		"html": {
+			"before": "  <fieldset>\n    <legend>%display_name%</legend>",
+			"list": "",
+			"after": "  </fieldset>"
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": "fieldset {\n  width: 100%;\n  margin-bottom: 20px;\n  margin-left: auto;\n  margin-right: auto;\n max-width: 800px;\n  background-color: #e2e2e2;\n  border:0px;\n}\n\nfieldset>fieldset {\n    border: 2px solid black;\n}\n\nlegend {\n    font-size: x-large;\n    font-weight: bold;\n    background-color: #989898;\n    padding: 0px 10px 3px 10px;\n    color: #f2f2f2;\n    border-radius: 3px;\n}\n\n.dataItem legend {\n    font-size: large;\n    color: inherit;\n    background-color:inherit;\n}\n\n"
+		},
+		"variables": {
+			"display_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			}
+		}
+	},
+	"date": {
+		"title": "Full row date",
+		"name": "date",
+		"comment": "Date entry field using native HTML5 <input type='date'> with popup calendar.",
+		"html": "  <div class='row_1'>\n    <label for='%element_id%'>%display_name%</label>\n    <div><input type='date' id='%element_id%' name='%element_name%'></div>\n    <div class='help'><button type='button' class='help-button' onClick=\"showhelp(`%help%`);\"><i class=\"fas fa-question\"></i></button>\n</div>\n</div>",
+		"css": "    input[type=date] {\n    display:inline-block;\n    }\n",
+		"js": {
+			"foot": "// Automatically set date field to today\nvar curdate = new Date().toLocaleDateString(\"en-CA\");\n  document.getElementById('%element_id%').value=curdate;"
+		},
+		"variables": {
+			"element_id": {
+				"type": "string"
+			},
+			"element_name": {
+				"type": "string"
+			},
+			"display_name": {
+				"type": "string"
+			},
+			"help": {
+				"type": "string"
+			}
+		}
+	},
+	"text": {
+		"name": "text",
+		"title": "Full row text",
+		"comment": "Text entry field using native HTML5 <input type='text'>.",
+		"container": false,
+		"html": {
+			"before": "  <div class='row_1'>\n    <label for='%element_id%'>%display_name%</label>\n    <div><input type='text' id='%element_id%' name='%element_name%' placeholder='%placeholder%'></div>\n    <div class='help'><button type='button' class='help-button' onClick=\"showhelp(`%help%`);\"><i class=\"fas fa-question\"></i></button>\n</div>\n</div>",
+			"list": "",
+			"after": ""
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": "    input[type=text] {\n    display:inline-block;\n    }\n"
+		},
+		"variables": {
+			"element_id": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"element_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"display_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"help": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"placeholder": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			}
+		}
+	},
+	"number": {
+		"name": "number",
+		"title": "Full row number",
+		"comment": "Number entry field using native HTML5 <input type='number'>.",
+		"container": false,
+		"html": {
+			"before": "  <div class='row_1'>\n    <label for='%element_id%'>%display_name%</label>\n    <div><input type='number' id='%element_id%' name='%element_name%' min='%min_val%' max='%max_val%' step='%step_val%' placeholder='%placeholder%' value='%default_val%'></div>\n    <div class='help'><button type='button' class='help-button' onClick=\"showhelp(`%help%`);\"><i class=\"fas fa-question\"></i></button></div></div>",
+			"list": "",
+			"after": ""
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": ""
+		},
+		"variables": {
+			"element_id": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"element_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"display_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"help": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"min_val": {
+				"type": "number",
+				"options": "",
+				"default": "1"
+			},
+			"max_val": {
+				"type": "number",
+				"options": "",
+				"default": ""
+			},
+			"step_val": {
+				"type": "number",
+				"options": "",
+				"default": "1"
+			},
+			"placeholder": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"default_val": {
+				"type": "number",
+				"options": "",
+				"default": ""
+			}
+		}
+	},
+	"select": {
+		"name": "select",
+		"title": "Full row dropdown select",
+		"comment": "Dropdown select list using HTML5 <select>.",
+		"html": {
+			"before": "  <div class='row_1'>\n    <label for='%element_id%'>%display_name%</label>\n    <div><select id='%element_id%' name='%element_name%' %required%>\n",
+			"list": "        <option value='%option_value%' %selected% %disabled%>%option_name%</option>\n",
+			"after": "  </select></div>\n    <div class='help'><button type='button' class='help-button' onClick=\"showhelp(`%help%`);\"><i class=\"fas fa-question\"></i></button></div></div>\n"
+		},
+		"js": {
+			"external": "",
+			"head": "",
+			"foot": ""
+		},
+		"css": {
+			"external": "",
+			"head": ""
+		},
+		"variables": {
+			"element_id": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"element_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"display_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"help": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"list_sql": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"list_options": {
+				"type": "array",
+				"options": "",
+				"default": ""
+			},
+			"required": {
+				"type": "string",
+				"options": "required,",
+				"default": ""
+			}
+		},
+		"list_variables": {
+			"option_name": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"option_value": {
+				"type": "string",
+				"options": "",
+				"default": ""
+			},
+			"selected": {
+				"type": "string",
+				"options": "selected,",
+				"default": ""
+			},
+			"disabled": {
+				"type": "string",
+				"options": "disabled,",
+				"default": ""
+			}
+		}
+	}
+}

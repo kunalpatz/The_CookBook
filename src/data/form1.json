@@ -1,0 +1,58 @@
+{ "name" : "AMU - administer",
+  "id" : "1",
+  "version": "1.0",
+  "elements" :[
+	{	"type": "form",
+		"element_id": "test_form",
+		"content": [	
+		{
+			"type":"title",
+			"display_name" : "AMU - Adminster"
+		},
+		{	
+			"type": "group",
+			"display_name" : "Treatment details",
+			"content" : [
+				{ 
+					"type": "date", 
+					"element_id": "use_date",
+					"element_name": "use_date",
+					"display_name": "Date",
+					"help": "<h1>Use Date</h1><P>Date of administration of the animicrobial (or start date if used over a period)</p>"
+				},
+				{
+					"type": "select",
+					"element_id": "product",
+					"element_name": "product",
+					"display_name": "Product",
+					"list_sql": "select 0 as option_value,  'Placeholder for list of products' as option_name"
+				},	
+				{
+					"type": "text",
+					"element_id": "batch",
+					"element_name": "batch",
+					"display_name": "Batch number",
+					"placeholder": "###-####-###"
+				},
+				{
+					"type": "number",
+					"element_id": "amountused",
+					"element_name": "amountused",
+					"display_name": "Amount",
+					"placeholder" : "Number of units administered",
+					"min_val" : "0",
+					"step_val": "0.01"
+				},
+				{
+					"type": "select",
+					"element_id": "reason",
+					"element_name": "reason",
+					"display_name": "Reason",
+					"list_sql": "select 0 as option_value,  'Placeholder for list of reasons' as option_name"
+				}
+			]
+		}		
+		]
+	}
+  ]
+}

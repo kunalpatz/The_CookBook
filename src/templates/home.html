@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/63f3f913ae.js" crossorigin="anonymous"></script>
+<link rel = "stylesheet" type = "text/css" href = "../static/css/common.css"> </head><body><fieldset class="black">
+<div>
+  <div></div>
+</div>
+
+
+<div class='topbar'>
+    <div>&nbsp;</div>
+    <div class='online'><i class='fas fa-circle'></i></div>
+    <div class='cache'><span id='cachecount'>2</span><i class='fas fa-upload'></i></div>
+</div>
+</fieldset><fieldset> <div class="dataItem"><legend><h1>AMU - administer</h1></legend></div>  <fieldset>
+    <legend>Treatment details</legend><form id='test_form'>
+    <input type="hidden" name="name" id='meta_name' value="%name%">
+    <input type="hidden" name="id" id='meta_id' value="%id%">
+    <input type="hidden" name="version" id='meta_version' value="%version%">
+
+
+
+
+  <div class='row_1'>
+    <label for='use_date'>Date</label>
+    <div><input type='date' id='use_date' name='use_date'></div>
+    <div class='help'><button type='button' class='help-button' onClick="showhelp(`<h1>Use Date</h1><P>Date of administration of the animicrobial (or start date if used over a period)</p>`);"><i class="fas fa-question"></i></button>
+</div>
+</div>  <div class='row_1'>
+    <label for='product'>Product</label>
+    <div><select id='product' name='product' %required%>
+        <option value='0' %selected% %disabled%>Placeholder for list of products</option>
+  </select></div>
+    <div class='help'><button type='button' class='help-button' onClick="showhelp(`%help%`);"><i class="fas fa-question"></i></button></div></div>
+  <div class='row_1'>
+    <label for='batch'>Batch number</label>
+    <div><input type='text' id='batch' name='batch' placeholder='###-####-###'></div>
+    <div class='help'><button type='button' class='help-button' onClick="showhelp(`%help%`);"><i class="fas fa-question"></i></button>
+</div>
+</div>  <div class='row_1'>
+    <label for='amountused'>Amount</label>
+    <div><input type='number' id='amountused' name='amountused' min='0' max='%max_val%' step='0.01' placeholder='Number of units administered' value='%default_val%'></div>
+    <div class='help'><button type='button' class='help-button' onClick="showhelp(`%help%`);"><i class="fas fa-question"></i></button></div></div>  <div class='row_1'>
+    <label for='reason'>Reason</label>
+    <div><select id='reason' name='reason' %required%>
+        <option value='0' %selected% %disabled%>Placeholder for list of reasons</option>
+  </select></div>
+    <div class='help'><button type='button' class='help-button' onClick="showhelp(`%help%`);"><i class="fas fa-question"></i></button></div></div>
+    <button type='button' class="right_button" onclick='submitForm("%element_id%","%target_url%");'><i class="fa fa-send"></i> Submit</button>
+</form>  </fieldset><script src = "../static/js/common.js"> </script></fieldset></body></html>
