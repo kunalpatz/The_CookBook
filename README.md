@@ -59,7 +59,7 @@ $ python main.py
 > This will launch a flask application on port 6262.
 ```
 
-## Output Vs Expectation
+## Expectation vs Output
 
 ![alt text](src/static/images/Expected.png)
 
